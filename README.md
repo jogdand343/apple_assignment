@@ -20,6 +20,7 @@ rails db:migrate
 
 * How to run the test suite
   bundle exec rspec --format documentation
+  #### To get number of page views per URL, grouped by day, for the past 5 days
   curl -X GET http://localhost:3000/api/v1/top_urls # Wont recommend as it goes through a million records if the dataset is generated
   #### To get top 3 number of page views per URL, grouped by day, for the past 5 days
   curl -X GET http://localhost:3000/api/v1/top_urls | jq 'to_entries | map({date: .key, top_urls: .value | sort_by(.visits) | reverse | .[:3]})'
